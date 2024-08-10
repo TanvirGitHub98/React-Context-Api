@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { ContextValue } from "../../App";
+import { NameContext } from "../../contexts/context1";
+
 
 const LastHome=()=>{
-    const getValue=useContext(ContextValue)
+    const [name,setName]=useContext(NameContext)
     return(
         <div>
            
            <div>
-                  <button >Last Value-{getValue}</button>
+                  <button >Last Value-{name}</button>
             </div>
         </div>
     )
