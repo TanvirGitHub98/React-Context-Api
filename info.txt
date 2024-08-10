@@ -1,0 +1,42 @@
+-----------------useMemo------------------
+suppose i have  function and two buttons. from even handling of one button i am calling that function but the 
+function is triggering from the another button, which i don't want.
+
+    const [plus,setPlus]=useState(0)
+    const [minus,setMinus]=useState(50)
+
+    const checkingNumber=()=>
+    {
+        console.log('........');
+        return plus%2===0;
+    }
+
+    return(
+        <div>
+            <h4>Number is- {checkingNumber()? 'Even':'Odd'}</h4>
+            <button onClick={()=>setPlus(plus+1)}>Increase- {plus}</button><hr/>
+            <button onClick={()=>setMinus(minus-1)}>Decrease- {minus}</button>
+        </div>
+    )
+
+because it reduce the performance of the project. In this case we use useMemo hook.
+
+
+    const [plus,setPlus]=useState(0)
+    const [minus,setMinus]=useState(50)
+
+    const checkingNumber=useMemo(()=>{
+        console.log('........');
+        return plus%2===0;
+
+    },[plus])
+
+    return(
+        <div>
+            <h4>Number is- {checkingNumber? 'Even':'Odd'}</h4>
+            <button onClick={()=>setPlus(plus+1)}>Increase- {plus}</button><hr/>
+            <button onClick={()=>setMinus(minus-1)}>Decrease- {minus}</button>
+        </div>
+    )
+
+
